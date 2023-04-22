@@ -26,8 +26,9 @@ kos:
       - linux/arm64
       - linux/arm
     sbom: none
+    repository: ghcr.io/eplightning/redirect
     labels:
-      "org.opencontainers.image.source": '{{ .GitURL }}'
+      "org.opencontainers.image.source": 'https://github.com/eplightning/redirect'
     bare: true
     tags:
       - latest
