@@ -13,8 +13,6 @@ builds:
       - amd64
       - arm64
       - arm
-    goarm:
-      - "7"
     ignore:
       - goos: windows
         goarch: arm
@@ -26,8 +24,10 @@ kos:
     platforms:
       - linux/amd64
       - linux/arm64
-      - linux/arm/v7
+      - linux/arm
     sbom: none
+    labels:
+      "org.opencontainers.image.source": '{{ .GitURL }}'
     bare: true
     tags:
       - latest
