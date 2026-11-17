@@ -1,3 +1,5 @@
+version: 2
+
 before:
   hooks:
     - go mod tidy
@@ -26,7 +28,8 @@ kos:
       - linux/arm64
       - linux/arm
     sbom: none
-    repository: ghcr.io/eplightning/redirect
+    repositories:
+      - ghcr.io/eplightning/redirect
     labels:
       "org.opencontainers.image.source": 'https://github.com/eplightning/redirect'
     bare: true
@@ -35,15 +38,15 @@ kos:
       - '{{ .Tag }}'
 
 archives:
-  - format: tar.gz
+  - formats: [tar.gz]
     name_template: >-
       {{ .ProjectName }}-{{ .Os }}-{{ .Arch }}
     format_overrides:
       - goos: windows
-        format: zip
+        formats: [zip]
 
 checksum:
   name_template: 'checksums.txt'
 
 snapshot:
-  name_template: "{{ incpatch .Version }}-next"
+  version_template: "{{ incpatch .Version }}-next"
